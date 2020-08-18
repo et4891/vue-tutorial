@@ -15,13 +15,24 @@ const app = new Vue({
         ],
         variants: [
             {
-                variantId: 2234,
-                variantColor: 'green'
+              variantId: 2234,
+              variantColor: 'green',
+              variantImage: 'https://www.vuemastery.com/images/challenges/vmSocks-green-onWhite.jpg'
             },
             {
-                variantId: 2235,
-                variantColor: 'blue'
-            },
-        ]
-    }
+              variantId: 2235,
+              variantColor: 'blue',
+              variantImage: 'https://www.vuemastery.com/images/challenges/vmSocks-blue-onWhite.jpg'
+            }
+          ],
+          cart: 0
+        },
+        methods: {
+          addToCart() {
+            this.cart += 1
+          },
+          updateProduct(variantImage) {
+            this.product_image = variantImage
+          }
+        }
 });
