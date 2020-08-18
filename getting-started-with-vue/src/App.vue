@@ -9,11 +9,13 @@
     <employee-table
       :employees="employees"
       @delete:employee="deleteEmployee"
+      @edit:employee="editEmployee"
     />
   </div>
 </template>
 
 <script>
+  import AppMethods from './components/methods/App';
   import EmployeeTable from './components/EmployeeTable.vue';
   import EmployeeForm from './components/EmployeeForm.vue';
 
@@ -28,17 +30,7 @@
         employees: []
       };
     },
-    methods: {
-      addEmployee(employee) {
-        // since id start with 1, if there's no employees, start id with 1, else check length of array and increase by 1
-        const lastId = (this.employees.length > 0) ? this.employees.length : 0;
-        const newEmployee = {...employee, id: lastId + 1};
-        this.employees = [...this.employees, newEmployee];
-      },
-      deleteEmployee(id){
-        this.employees = this.employees.filter(employee => employee.id !== id);
-      }
-    }
+    methods: AppMethods
   };
 </script>
 
