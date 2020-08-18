@@ -42,6 +42,8 @@
 
 
 <script>
+import EmployeeFormMethods from './methods/EmployeeForm.js';
+
 export default {
   name: "employee-form",
   data() {
@@ -55,30 +57,7 @@ export default {
       }
     };
   },
-  methods: {
-    handleSubmit() {
-      this.submitting = true;
-      this.clearStatus();
-
-      if (this.invalidName || this.invalidEmail) {
-        this.error = true;
-        return;
-      }
-
-      this.$emit("add:employee", this.employee);
-      this.employee = {
-        name: "",
-        email: ""
-      };
-      this.error = false;
-      this.success = true;
-      this.submitting = false;
-    },
-    clearStatus() {
-      this.success = false;
-      this.error = false;
-    }
-  },
+  methods: EmployeeFormMethods,
   computed: {
     invalidName(){
       return this.employee.name === '';
