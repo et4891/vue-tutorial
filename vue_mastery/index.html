@@ -21,7 +21,7 @@
                 <h1>{{ product }}</h1>
                 <p v-if="inventory > 5">In Stock</p>
                 <p v-else-if="inventory <= 5 && inventory > 0">Almost sold out!</p>
-                <p v-else>Out of Stock</p>
+                <p v-else :class="{ outOfStock : !inStock }">Out of Stock</p>
                 <img v-show="onSaleShow" class='on-sale-image' :src="onSaleImage" alt="alt.onSale">
 
                 <ul>

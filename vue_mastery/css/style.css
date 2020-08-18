@@ -94,3 +94,7 @@ body {
     box-shadow: initial;
     width: 20%;
   }
+
+  .outOfStock {
+    text-decoration: line-through;
+  }
