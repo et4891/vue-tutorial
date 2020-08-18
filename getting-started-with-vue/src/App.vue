@@ -2,7 +2,7 @@
   <div id="app" class="small-container">
     <h1>Employee</h1>
 
-    <employee-form />
+    <employee-form @add:employee='addEmployee' />
     <employee-table :employees='employees' />
   </div>
 </template>
@@ -37,6 +37,14 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    addEmployee(employee){
+      // since id start with 1, if there's no employees, start id with 1, else check length of array and increase by 1
+      const lastId = (this.employees.length > 0) ? this.employees.length : 1;
+      const newEmployee = {...employee, id: lastId + 1};
+      this.employees = [...this.employees, newEmployee];
+    }
   }
 };
 </script>
