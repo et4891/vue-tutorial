@@ -87,3 +87,10 @@ body {
     color: #16C0B0;
     text-decoration: underline;
   }
+
+  .on-sale-image {
+    border: initial;
+    margin: initial;
+    box-shadow: initial;
+    width: 20%;
+  }

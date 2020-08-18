@@ -13,16 +13,16 @@
     <div id="app">
         <div class="product">
 
-            <div class="product-link">
-                <a :href="product_link" target="_blank">Google</a>
-            </div>
-
             <div class="product-image">
                 <img :src="product_image" :alt="alt_text" />
             </div>
 
             <div class="product-info">
                 <h1>{{ product }}</h1>
+                <p v-if="inventory > 10">In Stock</p>
+                <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
+                <p v-else>Out of Stock</p>
+                <img v-show="onSaleShow" class='on-sale-image' :src="onSaleImage" alt="alt.onSale">
             </div>
 
         </div>
