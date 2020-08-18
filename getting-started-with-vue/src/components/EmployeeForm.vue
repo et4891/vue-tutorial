@@ -5,6 +5,7 @@
       <!-- form fields -->
       <label for="">Employee Name</label>
       <input
+        ref='first'
         v-model='employee.name'
         type="text"
 				:class="{ 'has-error': submitting && invalidName }"
