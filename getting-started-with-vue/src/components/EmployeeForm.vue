@@ -30,9 +30,7 @@ export default {
   },
   methods: {
     handleSubmit() {
-      const { name, email } = this.employee;
-      console.log(name, "name");
-      console.log(email, "email");
+        this.$emit('add:employee', this.employee);
     }
   }
 };
