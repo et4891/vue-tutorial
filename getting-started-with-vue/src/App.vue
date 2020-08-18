@@ -2,17 +2,20 @@
   <div id="app" class="small-container">
     <h1>Employee</h1>
 
+    <employee-form />
     <employee-table :employees='employees' />
   </div>
 </template>
 
 <script>
 import EmployeeTable from "./components/EmployeeTable.vue";
+import EmployeeForm from "./components/EmployeeForm.vue";
 
 export default {
   name: "App",
   components: {
-    EmployeeTable
+    EmployeeTable,
+    EmployeeForm
   },
   data() {
     return {

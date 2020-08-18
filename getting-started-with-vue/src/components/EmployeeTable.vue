@@ -13,20 +13,6 @@
           <td>{{ employee.name }}</td>
           <td>{{ employee.email }}</td>
         </tr>
-        <!-- <tr>
-          <td>Richard Hendricks</td>
-          <td>richard@piedpiper.com</td>
-        </tr>
-
-        <tr>
-          <td>Bertram Gilfoyle</td>
-          <td>gilfoyle@piedpiper.com</td>
-        </tr>
-
-        <tr>
-          <td>Dinesh Chugtai</td>
-          <td>dinesh@piedpiper.com</td>
-        </tr> -->
       </tbody>
 
     </table>
