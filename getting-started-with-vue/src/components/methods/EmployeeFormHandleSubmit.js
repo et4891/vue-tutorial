@@ -7,11 +7,11 @@ export default function () {
     return;
   }
 
-  this.$emit("add:employee", this.employee);
+  this.$emit('add:employee', this.employee);
   this.$refs.first.focus();
   this.employee = {
-    name: "",
-    email: ""
+    name: '',
+    email: ''
   };
   this.error = false;
   this.success = true;

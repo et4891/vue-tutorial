@@ -1,25 +1,24 @@
 <template>
   <div id="employee-form">
-    <form @submit.prevent='handleSubmit'>
-
+    <form @submit.prevent="handleSubmit">
       <!-- form fields -->
       <label for="">Employee Name</label>
       <input
-        ref='first'
-        v-model='employee.name'
+        ref="first"
+        v-model="employee.name"
         type="text"
-				:class="{ 'has-error': submitting && invalidName }"
-				@focus="clearStatus"
-				@keypress="clearStatus"
-      />
+        :class="{ 'has-error': submitting && invalidName }"
+        @focus="clearStatus"
+        @keypress="clearStatus"
+      >
 
       <label for="">Employee Email</label>
       <input
-        v-model='employee.email'
+        v-model="employee.email"
         type="text"
-				:class="{ 'has-error': submitting && invalidEmail }"
-				@focus="clearStatus"
-      />
+        :class="{ 'has-error': submitting && invalidEmail }"
+        @focus="clearStatus"
+      >
 
       <!-- error handle -->
       <p
@@ -35,7 +34,7 @@
         ✅ Employee successfully added
       </p>
 
-			<!-- submit button -->
+      <!-- submit button -->
       <button>Add Employee</button>
     </form>
   </div>
@@ -46,19 +45,18 @@
 import EmployeeFormMethods from './methods/EmployeeForm.js';
 
 export default {
-  name: "employee-form",
+  name: 'EmployeeForm',
   data() {
     return {
-			submitting: false,
-			error: false,
-			success: false,
+      submitting: false,
+      error: false,
+      success: false,
       employee: {
-        name: "",
-        email: ""
+        name: '',
+        email: ''
       }
     };
   },
-  methods: EmployeeFormMethods,
   computed: {
     invalidName(){
       return this.employee.name === '';
@@ -66,7 +64,8 @@ export default {
     invalidEmail(){
       return this.employee.email === '';
     },
-  }
+  },
+  methods: EmployeeFormMethods
 };
 </script>
 
