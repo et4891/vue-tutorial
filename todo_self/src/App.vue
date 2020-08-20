@@ -5,7 +5,8 @@
 </template>
 
 <script>
-import TodoList from './components/TodoList'
+import TodoApi from './apis/Todo';
+import TodoList from './components/TodoList';
 
 export default {
   name: 'App',
@@ -14,30 +15,24 @@ export default {
   },
   data() {
     return {
-      todos: [
-        {
-          userId: 1,
-          id: 1,
-          title: "delectus aut autem",
-          completed: false
-        },
-        {
-          userId: 1,
-          id: 2,
-          title: "quis ut nam facilis et officia qui",
-          completed: true
-        },
-        {
-          userId: 1,
-          id: 3,
-          title: "fugiat veniam minus",
-          completed: false
-        },
-      ]
+      todos: []
+    };
+  },
+  methods: {
+    async getList() {
+      try {
+        const response = await TodoApi.list();
+        this.todos = response.data;
+      } catch (e) {
+        console.log(e, 'error inside app.vue getList()');
+      }
     }
+  },
+  mounted() {
+    this.getList();
   }
 
-}
+};
 </script>
 
 <style>
