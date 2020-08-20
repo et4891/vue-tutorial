@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Header />
+    <AddTodo @add-todo="addTodo"/>
     <TodoList :todos="todos" @del-todo="deleteTodo"/>
   </div>
 </template>
@@ -8,12 +9,14 @@
 <script>
   import Header from './components/layout/Header';
   import TodoList from './components/TodoList';
-  import TodoApi from './apis/Todo';
+  import AddTodo from './components/AddTodo';
+  // import TodoApi from './apis/Todo';
 
   export default {
     name: 'App',
     components: {
       Header,
+      AddTodo,
       TodoList,
     },
     data() {
@@ -24,14 +27,38 @@
     methods: {
       async getList() {
         try {
-          const response = await TodoApi.list();
-          this.todos = response.data;
+          // const response = await TodoApi.list();
+          // this.todos = response.data;
+          this.todos = [
+            {
+              userId: 1,
+              id: 1,
+              title: 'delectus aut autem',
+              completed: false
+            },
+            {
+              userId: 1,
+              id: 2,
+              title: 'quis ut nam facilis et officia qui',
+              completed: false
+            },
+            {
+              userId: 1,
+              id: 3,
+              title: 'fugiat veniam minus',
+              completed: false
+            },
+          ];
         } catch (e) {
           console.log(e, 'error inside app.vue getList()');
         }
       },
       deleteTodo(id) {
         this.todos = this.todos.filter(todo => todo.id !== id);
+      },
+      addTodo(newTodo) {
+        console.log(newTodo, 'newTodo at app');
+        this.todos = [ ...this.todos, newTodo ];
       }
     },
     mounted() {
