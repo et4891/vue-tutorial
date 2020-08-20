@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="todo in todos" :key="todo.id">
-      <TodoItem :todo="todo"/>
+      <TodoItem :todo="todo" @delete-todo="deleteTodo"/>
     </div>
   </div>
 </template>
@@ -18,6 +18,12 @@ export default {
     todos: {
       type: Array
     }
+  },
+  methods: {
+    deleteTodo(id) {
+      this.todos = this.todos.filter(todo => todo.id !== id);
+    }
+
   }
 };
 </script>

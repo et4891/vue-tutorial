@@ -2,6 +2,7 @@
   <div class="todo-item" :class="{ 'is-complete': todo.completed }">
     <p>
       <input type="checkbox" :checked="todo.completed" @change="markComplete">{{ todo.title }}
+      <span class="del" @click="$emit('delete-todo', todo.id)">X</span>
     </p>
   </div>
 </template>
@@ -34,7 +35,7 @@
   }
 
   .del {
-    background: #ff0000;
+    background: #e2bc45;
     color: #fff;
     border: none;
     padding: 5px 9px;
