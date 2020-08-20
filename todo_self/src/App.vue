@@ -1,16 +1,19 @@
 <template>
   <div id="app">
+    <Header />
     <TodoList :todos="todos"/>
   </div>
 </template>
 
 <script>
-  import TodoApi from './apis/Todo';
+  import Header from './components/layout/Header';
   import TodoList from './components/TodoList';
+  import TodoApi from './apis/Todo';
 
   export default {
     name: 'App',
     components: {
+      Header,
       TodoList,
     },
     data() {
