@@ -30,7 +30,10 @@
         employees: []
       };
     },
-    methods: AppMethods
+    methods: AppMethods,
+    mounted() {
+      this.getEmployees();
+    }
   };
 </script>
 
