@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <TodoList :todos="todos"/>
+    <TodoList :todos="todos" @del-todo="deleteTodo"/>
   </div>
 </template>
 
@@ -29,6 +29,9 @@
         } catch (e) {
           console.log(e, 'error inside app.vue getList()');
         }
+      },
+      deleteTodo(id) {
+        this.todos = this.todos.filter(todo => todo.id !== id);
       }
     },
     mounted() {
