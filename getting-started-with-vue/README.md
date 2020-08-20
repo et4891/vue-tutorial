@@ -1,5 +1,8 @@
 # vue-tutorial
 
+## Tutorial Source
+[Vue Tutorial: An Overview and Walkthrough](https://www.taniarascia.com/getting-started-with-vue/)
+
 ## Project setup
 ```
 npm install
