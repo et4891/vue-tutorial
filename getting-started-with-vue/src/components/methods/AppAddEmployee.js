@@ -4,11 +4,11 @@ export default async function addEmployee(employee) {
       method: 'POST',
       body: JSON.stringify(employee),
       headers: { 'Content-type': 'application/json; charset=UTF-8' },
-    })
+    });
 
-    const data = await response.json()
-    this.employees = [ ...this.employees, data ]
+    const data = await response.json();
+    this.employees = [ ...this.employees, data ];
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }

@@ -6,7 +6,6 @@ export default async function editEmployee(id, updatedEmployee) {
       headers: { 'Content-type': 'application/json; charset=UTF-8' },
     })
     const data = await response.json()
-    console.log(data, 'data');
     this.employees = this.employees.map(employee => (employee.id === id
       ? data
       : employee))
