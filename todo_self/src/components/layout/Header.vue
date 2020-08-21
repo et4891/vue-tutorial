@@ -1,5 +1,11 @@
 <template>
-  <header class="header">Todo List</header>
+  <header class="header">
+    <h1>Todo List</h1>
+    <div id="nav">
+      <router-link to="/">Home</router-link>&nbsp;|
+      <router-link to="/about">About</router-link>
+    </div>
+  </header>
 </template>
 
 <script>

@@ -1,70 +1,19 @@
 <template>
   <div id="app">
     <Header />
-    <AddTodo @add-todo="addTodo"/>
-    <TodoList :todos="todos" @del-todo="deleteTodo"/>
+    <router-view/>
   </div>
 </template>
 
 <script>
   import Header from './components/layout/Header';
-  import TodoList from './components/TodoList';
-  import AddTodo from './components/AddTodo';
-  // import TodoApi from './apis/Todo';
 
   export default {
-    name: 'App',
+    name: 'app',
     components: {
       Header,
-      AddTodo,
-      TodoList,
-    },
-    data() {
-      return {
-        todos: []
-      };
-    },
-    methods: {
-      async getList() {
-        try {
-          // const response = await TodoApi.list();
-          // this.todos = response.data;
-          this.todos = [
-            {
-              userId: 1,
-              id: 1,
-              title: 'delectus aut autem',
-              completed: false
-            },
-            {
-              userId: 1,
-              id: 2,
-              title: 'quis ut nam facilis et officia qui',
-              completed: false
-            },
-            {
-              userId: 1,
-              id: 3,
-              title: 'fugiat veniam minus',
-              completed: false
-            },
-          ];
-        } catch (e) {
-          console.log(e, 'error inside app.vue getList()');
-        }
-      },
-      deleteTodo(id) {
-        this.todos = this.todos.filter(todo => todo.id !== id);
-      },
-      addTodo(newTodo) {
-        console.log(newTodo, 'newTodo at app');
-        this.todos = [ ...this.todos, newTodo ];
-      }
-    },
-    mounted() {
-      this.getList();
     }
-  };
+  }
 </script>
 
 <style>
@@ -73,12 +22,10 @@
     margin: 0;
     padding: 0;
   }
-
   body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.4;
   }
-
   .btn {
     display: inline-block;
     border: none;
@@ -87,7 +34,6 @@
     padding: 7px 20px;
     cursor: pointer;
   }
-
   .btn:hover {
     background: #666;
   }
