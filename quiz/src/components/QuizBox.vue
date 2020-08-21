@@ -8,7 +8,10 @@
       <hr class="my-4">
 
       <p>
-        list of answers
+        <Answers
+          :incorrectAnswers="this.currentQuestion.incorrect_answers"
+          :correctAnswer="this.currentQuestion.correct_answer"
+        />
       </p>
 
       <b-button variant="primary" href="#">Submit</b-button>
@@ -25,10 +28,12 @@
 </template>
 
 <script>
+import Answers from './Answers';
 
 export default {
   name: 'QuizBox',
   components: {
+    Answers,
   },
   props: {
     currentQuestion: {
