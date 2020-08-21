@@ -1,4 +1,4 @@
-# todo_self
+# Vue Crash Course
 Only looked at the tutorial when stuck, did not follow it 100% except for the CSS
 
 ## Source
