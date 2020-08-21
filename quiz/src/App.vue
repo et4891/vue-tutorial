@@ -9,10 +9,10 @@
         <b-col sm="8" offset="2">
           <QuizBox
             :currentQuestion="this.questions[this.index]"
-            :goToNextQuestion="this.goToNextQuestion"
             :totalQuestions="this.questions.length"
             :questionNumber="this.index + 1"
             @correct-answer="this.setCounter"
+            @next-question="this.goToNextQuestion"
           />
         </b-col>
       </b-row>

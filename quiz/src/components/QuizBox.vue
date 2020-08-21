@@ -28,7 +28,7 @@
         class="float-right"
         variant="success"
         href="#"
-        @click="goToNextQuestion"
+        @click="this.goToNextQuestion"
         :disabled="questionNumber === totalQuestions">
         Next
       </b-button>
@@ -49,9 +49,9 @@ export default {
     currentQuestion: {
       type: Object,
     },
-    goToNextQuestion: {
-      type: Function,
-    },
+    // goToNextQuestion: {
+    //   type: Function,
+    // },
     totalQuestions: {
       type: Number
     },
@@ -75,6 +75,10 @@ export default {
     },
     emitIsCorrect(boo){
       this.isCorrect = boo;
+    },
+    goToNextQuestion(){
+      this.$emit('next-question');
+      this.submitted = false;
     }
   },
 };

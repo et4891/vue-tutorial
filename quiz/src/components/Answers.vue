@@ -51,4 +51,8 @@ export default {
   .list-group-item.mark-green {
     background: #32a95d;
   }
+
+  .list-group-item.mark-red {
+    background: #ff0000;
+  }
 </style>
