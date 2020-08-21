@@ -49,9 +49,6 @@ export default {
     currentQuestion: {
       type: Object,
     },
-    // goToNextQuestion: {
-    //   type: Function,
-    // },
     totalQuestions: {
       type: Number
     },
