@@ -8,6 +8,8 @@
 </template>
 
 <script>
+  import TodoApi from '../apis/Todo';
+
   export default {
     name: 'AddTodo',
     data() {
@@ -16,18 +18,21 @@
       }
     },
     methods: {
-      addTodo(){
-        const newTodo = {
-          id: Math.floor(Math.random() * 1000) + 1,
-          title: this.title,
-          completed: false,
+      async addTodo(){
+        try {
+          const newTodo = {
+            title: this.title,
+            completed: false,
+          };
+
+          const response = await TodoApi.add(newTodo);
+
+          // Send event up to parent
+          this.$emit('add-todo', response.data);
+          this.title = '';
+        } catch (e) {
+          console.log(e, 'error inside add to do, addtodo.vue');
         }
-
-        console.log(newTodo, 'newTodo in add todo');
-
-        // Send event up to parent
-        this.$emit('add-todo', newTodo);
-        this.title = '';
       }
     }
   };

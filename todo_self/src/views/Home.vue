@@ -8,7 +8,7 @@
 <script>
 import TodoList from '../components/TodoList';
 import AddTodo from '../components/AddTodo';
-// import TodoApi from './apis/Todo';
+import TodoApi from '../apis/Todo';
 
 export default {
   name: 'App',
@@ -24,28 +24,8 @@ export default {
   methods: {
     async getList() {
       try {
-        // const response = await TodoApi.list();
-        // this.todos = response.data;
-        this.todos = [
-          {
-            userId: 1,
-            id: 1,
-            title: 'delectus aut autem',
-            completed: false
-          },
-          {
-            userId: 1,
-            id: 2,
-            title: 'quis ut nam facilis et officia qui',
-            completed: false
-          },
-          {
-            userId: 1,
-            id: 3,
-            title: 'fugiat veniam minus',
-            completed: false
-          },
-        ];
+        const response = await TodoApi.list('?_limit=5');
+        this.todos = response.data;
       } catch (e) {
         console.log(e, 'error inside app.vue getList()');
       }
@@ -54,11 +34,10 @@ export default {
       this.todos = this.todos.filter(todo => todo.id !== id);
     },
     addTodo(newTodo) {
-      console.log(newTodo, 'newTodo at app');
       this.todos = [ ...this.todos, newTodo ];
     }
   },
-  mounted() {
+  created() {
     this.getList();
   }
 };
