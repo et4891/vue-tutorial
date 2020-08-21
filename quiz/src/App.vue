@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <Header/>
+    <Header
+      :counter="this.counter"
+      :totalQuestions="this.questions.length"
+    />
     <b-container class="bv-example-row" v-if="this.questions.length">
       <b-row>
         <b-col sm="8" offset="2">
@@ -9,6 +12,7 @@
             :goToNextQuestion="this.goToNextQuestion"
             :totalQuestions="this.questions.length"
             :questionNumber="this.index + 1"
+            @correct-answer="this.setCounter"
           />
         </b-col>
       </b-row>
@@ -33,6 +37,7 @@ export default {
     return {
       questions: [],
       index: 0,
+      counter: 0,
     };
   },
   methods: {
@@ -46,6 +51,9 @@ export default {
     },
     goToNextQuestion() {
       this.index++;
+    },
+    setCounter(boo) {
+      if (boo) this.counter++;
     }
   },
   mounted() {

@@ -11,18 +11,28 @@
         <Answers
           :incorrectAnswers="this.currentQuestion.incorrect_answers"
           :correctAnswer="this.currentQuestion.correct_answer"
+          :success="this.success"
+          @is-correct="emitIsCorrect"
         />
       </p>
 
-      <b-button variant="primary" href="#">Submit</b-button>
       <b-button
+        class="float-left"
+        variant="primary"
+        @click.prevent="onSubmit"
+        :disabled="this.submitted"
+      >
+        Submit
+      </b-button>
+      <b-button
+        class="float-right"
         variant="success"
         href="#"
         @click="goToNextQuestion"
         :disabled="questionNumber === totalQuestions">
         Next
       </b-button>
-      <p class="text-right">{{ questionNumber }} / {{ totalQuestions }}</p>
+      <p>{{ questionNumber }} / {{ totalQuestions }}</p>
     </b-jumbotron>
   </div>
 </template>
@@ -48,7 +58,25 @@ export default {
     questionNumber: {
       type: Number
     },
-  }
+  },
+  data () {
+    return {
+      isCorrect: false,
+      success: false,
+      submitted: false,
+    }
+  },
+  methods: {
+    onSubmit(){
+      // console.log(this.isCorrect, 'is correct in quiz box');
+      this.submitted = true;
+      this.success = this.isCorrect;
+      this.$emit('correct-answer', this.success);
+    },
+    emitIsCorrect(boo){
+      this.isCorrect = boo;
+    }
+  },
 };
 </script>
 

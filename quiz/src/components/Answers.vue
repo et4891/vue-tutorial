@@ -5,8 +5,10 @@
         v-for="(answer, index) in this.shuffledAnswers"
         :key="index"
         @click="chosenAnswer(answer); selected = index"
-        :class="{active:index === selected}"
-      >{{ answer }}</b-list-group-item>
+        :class="{ active:index === selected, 'mark-green':(success && index === selected) }"
+        v-html="answer"
+      >
+      </b-list-group-item>
     </b-list-group>
   </div>
 </template>
@@ -20,7 +22,10 @@ export default {
     },
     correctAnswer: {
       type: String,
-    }
+    },
+    success: {
+      type: Boolean,
+    },
   },
   data () {
     return {
@@ -31,6 +36,7 @@ export default {
   methods: {
     chosenAnswer(answer){
       this.isCorrect = (answer === this.correctAnswer);
+      this.$emit('is-correct', this.isCorrect);
     }
   },
   computed: {
@@ -42,5 +48,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .list-group-item.mark-green {
+    background: #32a95d;
+  }
 </style>
