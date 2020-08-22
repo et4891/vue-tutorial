@@ -12,7 +12,18 @@
           v-for="(answer, index) in answers"
           v-html="answer"
           :key="index"
-          :class="{ selected: selectedIndex === index }"
+          :class="{
+            /*
+             * Three cases
+             * 1.  add class 'selected' to which item is selected
+             * 2.  add class 'correct' if is answered, and correctAnswerIndex is the same as index
+             * 3.  add class 'incorrect' if is answered is true, and both selectedIndex and correctAnswerIndex is the same as index
+             * For the 3rd case, if selectedIndex === index is not added, all other items will added with 'incorrect' class
+             *  */
+            selected: (selectedIndex === index),
+            correct: (answered) && (correctAnswerIndex === index),
+            incorrect: (answered) && (selectedIndex === index) && (correctAnswerIndex !== index),
+          }"
           @click="selectAnswer(index)"
         >
         </b-list-group-item>
