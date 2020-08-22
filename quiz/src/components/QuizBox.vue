@@ -55,6 +55,21 @@ export default {
       selectedIndex: null,
     }
   },
+  watch: {
+    /* listen to this prop, any changes the function will run
+     * but this will not run on first load, if need to run on first load use below
+     *
+     * currentQuestion: {
+     *   immediate: true,
+     *   handler() {
+     *     this.selectedIndex = null;
+     *   }
+     * }
+     * */
+    currentQuestion(){
+      this.selectedIndex = null;
+    }
+  },
   methods: {
     selectAnswer(index) {
       this.selectedIndex = index;
@@ -73,12 +88,9 @@ export default {
     margin-bottom: 15px;
   }
 
-  .selected {
+  .selected,
+  .list-group-item:hover{
     background-color: lightskyblue;
-  }
-
-  .list-group-item:hover {
-    background-color: #eee;
   }
 
   .correct {
