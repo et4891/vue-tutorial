@@ -18,7 +18,13 @@
         </b-list-group-item>
       </b-list-group>
 
-      <b-button variant="primary">Submit</b-button>
+      <b-button
+        variant="primary"
+        @click="submitAnswer"
+        :disabled="(this.selectedIndex === null) || answered"
+      >
+        Submit
+      </b-button>
       <b-button
         variant="success"
         @click="goToNextQuestion"
@@ -34,8 +40,7 @@
 
 export default {
   name: 'QuizBox',
-  components: {
-  },
+  components: {},
   props: {
     currentQuestion: {
       type: Object,
@@ -43,17 +48,21 @@ export default {
     goToNextQuestion: {
       type: Function,
     },
+    increment: {
+      type: Function,
+    },
     totalQuestions: {
-      type: Number
+      type: Number,
     },
     questionNumber: {
-      type: Number
+      type: Number,
     },
   },
-  data(){
+  data() {
     return {
       selectedIndex: null,
-    }
+      answered: false,
+    };
   },
   watch: {
     /* listen to this prop, any changes the function will run
@@ -66,18 +75,30 @@ export default {
      *   }
      * }
      * */
-    currentQuestion(){
+    currentQuestion() {
       this.selectedIndex = null;
-    }
+      this.answered = false;
+    },
   },
   methods: {
     selectAnswer(index) {
       this.selectedIndex = index;
-    }
+    },
+    submitAnswer() {
+      const isCorrect = (this.selectedIndex === this.correctAnswerIndex);
+      this.answered = true;
+      this.increment(isCorrect);
+    },
   },
   computed: {
+    correctAnswer() {
+      return this.currentQuestion.correct_answer;
+    },
     answers() {
-      return this.$helpers.shuffle([...this.currentQuestion.incorrect_answers, this.currentQuestion.correct_answer]);
+      return this.$helpers.shuffle([ ...this.currentQuestion.incorrect_answers, this.correctAnswer ]);
+    },
+    correctAnswerIndex() {
+      return this.answers.indexOf(this.correctAnswer);
     }
   }
 };
