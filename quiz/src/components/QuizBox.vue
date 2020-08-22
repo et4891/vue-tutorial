@@ -12,18 +12,8 @@
           v-for="(answer, index) in answers"
           v-html="answer"
           :key="index"
-          :class="{
-            /*
-             * Three cases
-             * 1.  add class 'selected' to which item is selected
-             * 2.  add class 'correct' if is answered, and correctAnswerIndex is the same as index
-             * 3.  add class 'incorrect' if is answered is true, and both selectedIndex and correctAnswerIndex is the same as index
-             * For the 3rd case, if selectedIndex === index is not added, all other items will added with 'incorrect' class
-             *  */
-            selected: (selectedIndex === index),
-            correct: (answered) && (correctAnswerIndex === index),
-            incorrect: (answered) && (selectedIndex === index) && (correctAnswerIndex !== index),
-          }"
+          :class="answerItemClass(index)"
+          :disabled="answered"
           @click="selectAnswer(index)"
         >
         </b-list-group-item>
@@ -100,6 +90,27 @@ export default {
       this.answered = true;
       this.increment(isCorrect);
     },
+    answerItemClass(index) {
+      /*
+     * Three cases
+     * 1.  add class 'selected' to which item is selected
+     * 2.  add class 'correct' if is answered, and correctAnswerIndex is the same as index
+     * 3.  add class 'incorrect' if is answered is true, and both selectedIndex and correctAnswerIndex is the same as index
+     * For the 3rd case, if selectedIndex === index is not added, all other items will added with 'incorrect' class
+     *  */
+      let result = ''
+
+      if (this.selectedIndex === index) result = 'selected';
+      if ((this.answered) &&
+        (this.correctAnswerIndex === index)
+      ) result = 'correct';
+      if ((this.answered) &&
+        (this.selectedIndex === index) &&
+        (this.correctAnswerIndex !== index)
+      ) result = 'incorrect';
+
+      return result;
+    },
   },
   computed: {
     correctAnswer() {
@@ -110,7 +121,7 @@ export default {
     },
     correctAnswerIndex() {
       return this.answers.indexOf(this.correctAnswer);
-    }
+    },
   }
 };
 </script>
