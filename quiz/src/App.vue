@@ -28,7 +28,8 @@
 import Header from './components/Header';
 import QuizBox from './components/QuizBox';
 
-import QuizApi from './apis/Quiz';
+import AppMethods from './methods/App';
+import AppComputed from './computed/App';
 
 
 export default {
@@ -44,28 +45,8 @@ export default {
       numCorrect: 0,
     };
   },
-  methods: {
-    async getQuiz() {
-      try {
-        const response = await QuizApi.list();
-        this.questions = response.data.results;
-      } catch (e) {
-        console.log(e, 'error at getQuiz in app.vue');
-      }
-    },
-    goToNextQuestion() {
-      this.index++;
-    },
-    increment(isCorrect) {
-      if (isCorrect) this.numCorrect++;
-
-    },
-  },
-  computed: {
-    totalQuestions(){
-      return this.questions.length;
-    }
-  },
+  methods: AppMethods,
+  computed: AppComputed,
   mounted() {
     this.getQuiz();
   }
