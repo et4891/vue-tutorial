@@ -7,14 +7,20 @@
 
       <hr class="my-4">
 
-      <p>
-        list of answers
-      </p>
+      <b-list-group>
+        <b-list-group-item
+          v-for="(answer, index) in answers"
+          v-html="answer"
+          :key="index"
+          :class="{ selected: selectedIndex === index }"
+          @click="selectAnswer(index)"
+        >
+        </b-list-group-item>
+      </b-list-group>
 
-      <b-button variant="primary" href="#">Submit</b-button>
+      <b-button variant="primary">Submit</b-button>
       <b-button
         variant="success"
-        href="#"
         @click="goToNextQuestion"
         :disabled="questionNumber === totalQuestions">
         Next
@@ -43,10 +49,47 @@ export default {
     questionNumber: {
       type: Number
     },
+  },
+  data(){
+    return {
+      selectedIndex: null,
+    }
+  },
+  methods: {
+    selectAnswer(index) {
+      this.selectedIndex = index;
+    }
+  },
+  computed: {
+    answers() {
+      return this.$helpers.shuffle([...this.currentQuestion.incorrect_answers, this.currentQuestion.correct_answer]);
+    }
   }
 };
 </script>
 
 <style scoped>
+  .list-group {
+    margin-bottom: 15px;
+  }
 
+  .selected {
+    background-color: lightskyblue;
+  }
+
+  .list-group-item:hover {
+    background-color: #eee;
+  }
+
+  .correct {
+    background-color: #42b983;
+  }
+
+  .incorrect {
+    background-color: indianred;
+  }
+
+  .btn {
+    margin: 0 5px;
+  }
 </style>
