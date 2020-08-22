@@ -1,15 +1,19 @@
 <template>
   <div id="app">
     <Header/>
-    <b-container class="bv-example-row" v-if="this.questions.length">
+    <b-container class="bv-example-row">
       <b-row>
         <b-col sm="8" offset="2">
           <QuizBox
+            v-if="this.questions.length"
             :currentQuestion="this.questions[this.index]"
             :goToNextQuestion="this.goToNextQuestion"
             :totalQuestions="this.questions.length"
             :questionNumber="this.index + 1"
           />
+          <div v-else>
+            <img src="https://mobile-realty.s3-us-west-2.amazonaws.com/loading-0.gif" alt="">
+          </div>
         </b-col>
       </b-row>
     </b-container>
