@@ -12,6 +12,7 @@
           :incorrectAnswers="this.currentQuestion.incorrect_answers"
           :correctAnswer="this.currentQuestion.correct_answer"
           :success="this.success"
+          :reset="this.reset"
           @is-correct="emitIsCorrect"
         />
       </p>
@@ -61,6 +62,13 @@ export default {
       isCorrect: false,
       success: false,
       submitted: false,
+      reset: false,
+    }
+  },
+  watch: {
+    questionNumber(){
+      this.submitted = false;
+      this.reset = true;
     }
   },
   methods: {
@@ -75,7 +83,6 @@ export default {
     },
     goToNextQuestion(){
       this.$emit('next-question');
-      this.submitted = false;
     }
   },
 };

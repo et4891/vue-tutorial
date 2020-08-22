@@ -26,11 +26,19 @@ export default {
     success: {
       type: Boolean,
     },
+    reset: {
+      type: Boolean,
+    },
   },
   data () {
     return {
       isCorrect: false,
       selected: false,
+    }
+  },
+  watch: {
+    reset(){
+      this.selected = false;
     }
   },
   methods: {
