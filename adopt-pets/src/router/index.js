@@ -23,7 +23,7 @@ const routes = [
     component: Cats,
   },
   {
-    path: '/pet/:species/:id',
+    path: '/pets/:species/:id',
     name: 'Pet',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
