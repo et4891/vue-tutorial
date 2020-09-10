@@ -1,6 +1,7 @@
 <template>
   <div>
-    {{ animal.name }}
+    <p>{{ animal.name }}</p>
+    <p>{{ animal.age }} years old</p>
   </div>
 </template>
 
