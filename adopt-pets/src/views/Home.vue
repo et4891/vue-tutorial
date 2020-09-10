@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <h1>Adopt a new best friend.</h1>
+    <h2>Total adopted {{ totalPets }}</h2>
     <button class="btn btn-info" @click.prevent="toggleFormBtn">Add Pet</button>
     <AddPetForm v-if="toggleForm"/>
   </div>
@@ -9,6 +10,7 @@
 <script>
 
 import AddPetForm from '../components/AddPetForm';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'Home',
@@ -19,6 +21,11 @@ export default {
   },
   components: {
     AddPetForm,
+  },
+  computed: {
+    ...mapGetters([
+      'totalPets',
+    ]),
   },
   methods: {
     toggleFormBtn() {
