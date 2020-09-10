@@ -55,11 +55,14 @@ export default {
     ]),
     onSubmit() {
       this.addPet(this.dataForm);
-      this.dataForm = {
-        name: '',
-        age: 0,
-        species: null,
-      };
+      this.$router.push(`${this.dataForm.species}s`); // redirect to the url
+
+      /* Form clears after redirecting */
+      // this.dataForm = {
+      //   name: '',
+      //   age: 0,
+      //   species: null,
+      // };
     },
   },
 };
