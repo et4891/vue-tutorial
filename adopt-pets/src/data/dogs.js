@@ -2,6 +2,7 @@ export default [
   {
     name: 'Sheeba',
     breed: 'collie',
+    species: 'dog',
     gender: 'female',
     age: 7,
     color: 'black/white',
@@ -12,6 +13,7 @@ export default [
   {
     name: 'Hillary',
     breed: 'mut',
+    species: 'dog',
     gender: 'female',
     age: 17,
     color: 'orange/white',
@@ -22,6 +24,7 @@ export default [
   {
     name: 'Zeus',
     breed: 'afghan hound',
+    species: 'dog',
     gender: 'male',
     age: 9,
     color: 'gray',
@@ -32,6 +35,7 @@ export default [
   {
     name: 'Katie',
     breed: 'golden retriever',
+    species: 'dog',
     gender: 'female',
     age: 2,
     color: 'black',

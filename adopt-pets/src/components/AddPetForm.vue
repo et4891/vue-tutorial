@@ -20,21 +20,24 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group id="input-group-3" label="Food:" label-for="input-3">
+      <b-form-group id="input-group-3" label="Species:" label-for="input-3">
         <b-form-select
           id="input-3"
           v-model="dataForm.species"
-          :options="['cats', 'dogs']"
+          :options="['', 'cat', 'dog']"
           required
         ></b-form-select>
       </b-form-group>
 
       <b-button type="submit" variant="primary">Submit</b-button>
+      <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'AddPetForm',
   data() {
@@ -47,8 +50,16 @@ export default {
     };
   },
   methods: {
+    ...mapActions([
+      'addPet',
+    ]),
     onSubmit() {
-      console.log(this.dataForm, 'this.dataForm');
+      this.addPet(this.dataForm);
+      this.dataForm = {
+        name: '',
+        age: 0,
+        species: null,
+      };
     },
   },
 };
