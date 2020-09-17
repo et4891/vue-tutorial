@@ -3,24 +3,27 @@
     <TodoInput
       @onAddEmit="onAdd"
     />
+    <TodoList :todos="todos" />
   </div>
 </template>
 
 <script>
 import TodoInput from '../components/TodoInput';
+import TodoList from '../components/TodoList';
 
 export default {
   name: 'App',
   data() {
     return {
-      todosList: [
+      todos: [
         { id: 1, value: 'complete todo', completed: false },
-        { id: 2, value: 'testing', completed: false },
+        { id: 2, value: 'testing', completed: true },
       ]
     }
   },
   components: {
-    TodoInput
+    TodoInput,
+    TodoList
   },
   methods: {
     onAdd(value) {
