@@ -27,7 +27,13 @@ export default {
   },
   methods: {
     onAdd(value) {
-      console.log(value, 'what is the value here?');
+      const lastId = this.todos[this.todos.length - 1].id;
+      const newTodo = {
+        completed: false,
+        id: lastId + 1,
+        value,
+      }
+      this.todos = [ ...this.todos, newTodo ];
     }
   }
 }
