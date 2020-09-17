@@ -3,7 +3,10 @@
     <TodoInput
       @onAddEmit="onAdd"
     />
-    <TodoList :todos="todos" />
+    <TodoList
+      :todos="todos"
+      @onRemoveEmit="onRemove"
+    />
   </div>
 </template>
 
@@ -27,14 +30,17 @@ export default {
   },
   methods: {
     onAdd(value) {
-      const lastId = this.todos[this.todos.length - 1].id;
+      const lastId = this.todos[this.todos.length - 1];
       const newTodo = {
         completed: false,
-        id: lastId + 1,
+        id: (lastId) ? lastId.id + 1 : 1,
         value,
       }
       this.todos = [ ...this.todos, newTodo ];
-    }
+    },
+    onRemove(id) {
+      this.todos = this.todos.filter(todo => todo.id !== id);
+    },
   }
 }
 </script>

@@ -6,6 +6,7 @@
           v-for="todo in todos"
           :key="todo.id"
           :todo="todo"
+          @onRemoveEmit="onRemove"
         />
       </tbody>
     </table>
@@ -21,6 +22,11 @@ export default {
   components: {
     TodoListItem
   },
+  methods: {
+    onRemove(id) {
+      this.$emit('onRemoveEmit', id);
+    }
+  }
 }
 </script>
 

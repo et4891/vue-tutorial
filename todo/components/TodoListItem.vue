@@ -19,7 +19,7 @@
       </div>
     </td>
     <td>
-      <button class="btn btn-sm btn-outline-danger float-right">X</button>
+      <button class="btn btn-sm btn-outline-danger float-right" @click.prevent="onRemove">X</button>
     </td>
   </tr>
 </template>
@@ -31,6 +31,9 @@ export default {
   methods: {
     onCheck() {
       this.todo.completed = !this.todo.completed;
+    },
+    onRemove() {
+      this.$emit('onRemoveEmit', this.todo.id);
     }
   }
 }
