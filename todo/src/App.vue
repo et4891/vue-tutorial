@@ -1,12 +1,17 @@
 <template>
-  <div>
-    Initial Todo
+  <div class="container">
+    <TodoInput />
   </div>
 </template>
 
 <script>
+import TodoInput from '../components/TodoInput';
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    TodoInput
+  },
 }
 </script>
 
