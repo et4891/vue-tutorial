@@ -24,7 +24,7 @@ export default {
       this.todoText = null;
     },
     onAdd() {
-      console.log(this.todoText);
+      this.$emit('onAddEmit', this.todoText);
     }
   }
 }
