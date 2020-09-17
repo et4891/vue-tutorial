@@ -10,7 +10,7 @@
           :checked="todo.completed"
         >
         <label
-          class="custom-control-label"
+          class="custom-control-label clickable"
           :class="{ isCompleted: todo.completed }"
           :for="'checkbox-' + todo.id"
         >
@@ -42,5 +42,9 @@ export default {
 <style scoped>
   .isCompleted {
     text-decoration: line-through;
+  }
+
+  .clickable {
+    cursor: pointer !important;
   }
 </style>

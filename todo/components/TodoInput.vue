@@ -17,14 +17,18 @@ export default {
     }
   },
   methods: {
+    reset() {
+      this.todoText = null;
+    },
     todoInput(e) {
       this.todoText = e.target.value;
     },
     onReset() {
-      this.todoText = null;
+      this.reset();
     },
     onAdd() {
       this.$emit('onAddEmit', this.todoText);
+      this.reset();
     }
   }
 }
