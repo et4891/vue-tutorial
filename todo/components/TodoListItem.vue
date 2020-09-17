@@ -1,20 +1,27 @@
 <template>
-  <div class="custom-control custom-checkbox">
-    <input
-      type="checkbox"
-      class="custom-control-input"
-      :id="'checkbox-' + todo.id"
-      @click="onCheck"
-      :checked="todo.completed"
-    >
-    <label
-      class="custom-control-label"
-      :class="{ isCompleted: todo.completed }"
-      :for="'checkbox-' + todo.id"
-    >
-      {{ todo.value }}
-    </label>
-  </div>
+  <tr>
+    <td>
+      <div class="custom-control custom-checkbox">
+        <input
+          type="checkbox"
+          class="custom-control-input"
+          :id="'checkbox-' + todo.id"
+          @click="onCheck"
+          :checked="todo.completed"
+        >
+        <label
+          class="custom-control-label"
+          :class="{ isCompleted: todo.completed }"
+          :for="'checkbox-' + todo.id"
+        >
+          {{ todo.value }}
+        </label>
+      </div>
+    </td>
+    <td>
+      <button class="btn btn-sm btn-danger float-right">X</button>
+    </td>
+  </tr>
 </template>
 
 <script>

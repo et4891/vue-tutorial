@@ -1,10 +1,14 @@
 <template>
-  <div>
-    <TodoListItem
-      v-for="todo in todos"
-      :key="todo.id"
-      :todo="todo"
-    />
+  <div class="table-responsive table-hover table-borderless table-sm">
+    <table class="table">
+      <tbody>
+        <TodoListItem
+          v-for="todo in todos"
+          :key="todo.id"
+          :todo="todo"
+        />
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -21,5 +25,8 @@ export default {
 </script>
 
 <style scoped>
-
+  .table {
+    width: 80%;
+    margin: auto;
+  }
 </style>
