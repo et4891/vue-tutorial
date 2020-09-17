@@ -19,7 +19,7 @@
       </div>
     </td>
     <td>
-      <button class="btn btn-sm btn-danger float-right">X</button>
+      <button class="btn btn-sm btn-outline-danger float-right">X</button>
     </td>
   </tr>
 </template>
