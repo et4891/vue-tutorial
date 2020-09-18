@@ -14,7 +14,7 @@
           :class="{ isCompleted: todo.completed }"
           :for="'checkbox-' + todo.id"
         >
-          {{ todo.value }}
+          {{ todo.item }}
         </label>
       </div>
     </td>

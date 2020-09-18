@@ -19,8 +19,8 @@ export default {
   data() {
     return {
       todos: [
-        { id: 1, value: 'complete todo', completed: false },
-        { id: 2, value: 'testing', completed: true },
+        { id: 1, item: 'complete todo', completed: false },
+        { id: 2, item: 'testing', completed: true },
       ]
     }
   },
