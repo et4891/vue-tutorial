@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 import TodoInput from '../components/TodoInput';
 import TodoList from '../components/TodoList';
 
@@ -29,18 +31,26 @@ export default {
     TodoList
   },
   methods: {
-    onAdd(value) {
-      const lastId = this.todos[this.todos.length - 1];
-      const newTodo = {
-        completed: false,
-        id: (lastId) ? lastId.id + 1 : 1,
-        value,
+    async onAdd(value) {
+      try {
+
+//          const response = await axios.post('http://localhost:3001/api/todo');
+//          this.todos = [ ...this.todos, newTodo ];
+      } catch (e) {
+          console.log(e, 'error in App onAdd');
       }
-      this.todos = [ ...this.todos, newTodo ];
     },
     onRemove(id) {
       this.todos = this.todos.filter(todo => todo.id !== id);
     },
+  },
+  async created() {
+      try {
+          const response = await axios.get('http://localhost:3001/api/todo');
+          this.todos = response.data.data;
+      } catch (e) {
+          console.log(e, 'error in App create');
+      }
   }
 }
 </script>
