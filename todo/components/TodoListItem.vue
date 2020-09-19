@@ -42,8 +42,9 @@ export default {
           _id: this.todoId,
           completed: !this.todo.completed,
         });
-        console.log(response, 'responseresponseresponseresponse');
-        this.todo.completed = !this.todo.completed;
+        if (response.data.status) {
+          this.todo.completed = !this.todo.completed;
+        }
       } catch (e) {
         console.log(e, 'todolistitem oncheck');
       }

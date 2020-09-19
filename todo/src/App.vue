@@ -50,6 +50,7 @@ export default {
   async created() {
     try {
       const response = await TodoApi.list();
+      console.log(response, 'responseresponseresponse list?');
       this.todos = response.data.data;
     } catch (e) {
       console.log(e, 'error in App create');

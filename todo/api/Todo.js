@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'https://express-tutorial-api.herokuapp.com';
 const TODO_PATH = '/api/todo'
 export default {
   list: () => axios.get(`${ BASE_URL }${TODO_PATH}`),
