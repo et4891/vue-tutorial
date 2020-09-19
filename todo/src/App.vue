@@ -11,7 +11,6 @@
 </template>
 
 <script>
-// import axios from 'axios';
 import TodoApi from '../api/Todo';
 
 import TodoInput from '../components/TodoInput';

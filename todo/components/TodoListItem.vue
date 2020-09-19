@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import TodoApi from '../api/Todo';
+
 export default {
   name: 'TodoListItem',
   props: ['todo'],
@@ -34,8 +36,17 @@ export default {
     }
   },
   methods: {
-    onCheck() {
-      this.todo.completed = !this.todo.completed;
+    async onCheck() {
+      try {
+        const response = await TodoApi.completed({
+          _id: this.todoId,
+          completed: !this.todo.completed,
+        });
+        console.log(response, 'responseresponseresponseresponse');
+        this.todo.completed = !this.todo.completed;
+      } catch (e) {
+        console.log(e, 'todolistitem oncheck');
+      }
     },
     onRemove() {
       this.$emit('onRemoveEmit', this.todoId);
