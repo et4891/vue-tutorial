@@ -5,14 +5,14 @@
         <input
           type="checkbox"
           class="custom-control-input"
-          :id="'checkbox-' + todo.id"
+          :id="'checkbox-' + todoId"
           @click="onCheck"
           :checked="todo.completed"
         >
         <label
           class="custom-control-label clickable"
           :class="{ isCompleted: todo.completed }"
-          :for="'checkbox-' + todo.id"
+          :for="'checkbox-' + todoId"
         >
           {{ todo.item }}
         </label>
@@ -28,12 +28,17 @@
 export default {
   name: 'TodoListItem',
   props: ['todo'],
+  computed: {
+    todoId() {
+      return this.todo.id || this.todo._id;
+    }
+  },
   methods: {
     onCheck() {
       this.todo.completed = !this.todo.completed;
     },
     onRemove() {
-      this.$emit('onRemoveEmit', this.todo.id);
+      this.$emit('onRemoveEmit', this.todoId);
     }
   }
 }

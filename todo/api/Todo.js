@@ -5,5 +5,6 @@ const TODO_PATH = '/api/todo'
 export default {
   list: () => axios.get(`${ BASE_URL }${TODO_PATH}`),
   create: todo => axios.post(`${ BASE_URL }${TODO_PATH}`, todo),
-  remove: () => axios.delete(`${ BASE_URL }${TODO_PATH}`),
+  completed: id => axios.post(`${ BASE_URL }${TODO_PATH}`, id),
+  remove: _id => axios.delete(`${ BASE_URL }${ TODO_PATH }`, { data: { _id } }),
 };
