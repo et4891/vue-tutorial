@@ -1,13 +1,16 @@
 <template>
   <div class="table-responsive table-hover table-borderless table-sm">
     <table class="table">
-      <tbody>
+      <tbody v-if="todos.length > 0">
         <TodoListItem
           v-for="todo in todos"
           :key="todo.id"
           :todo="todo"
           @onRemoveEmit="onRemove"
         />
+      </tbody>
+      <tbody v-else>
+        <tr><td class="text-center">No items YET</td></tr>
       </tbody>
     </table>
   </div>
