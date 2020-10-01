@@ -1,3 +1,6 @@
 [submodule "vue-todo"]
 	path = vue-todo
 	url = git@github.com:et4891/vue-todo.git
+[submodule "vuex-todo"]
+	path = vuex-todo
+	url = git@github.com:et4891/vuex-todo.git
